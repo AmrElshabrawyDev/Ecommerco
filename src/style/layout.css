@@ -1,0 +1,199 @@
+/* ============================================================
+   layout.css — Navbar, Offcanvas, Carousel, Themes, Footer
+   Structural page-level components and navigation.
+   ============================================================ */
+
+/* ─── Navbar ────────────────────────────────────────────────── */
+
+.navbar {
+  background: var(--color-black-ops);
+}
+
+.navbar-brand {
+  text-align: center;
+}
+
+/* Brand SVG Logo */
+.brand-svg {
+  width: var(--brand-svg-size);
+}
+
+.brand-svg path:first-child {
+  fill: #0000 !important;
+  stroke: var(--color-bg-body);
+}
+
+.brand-svg path:nth-child(2) {
+  fill: var(--color-bg-body) !important;
+  stroke: var(--color-bg-body);
+}
+
+/* ─── Nav Links ─────────────────────────────────────────────── */
+
+.nav-link {
+  position: relative;
+  text-align: center;
+  transition: var(--transition-slow) !important;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  width: 0%;
+  color: #0000;
+  background: var(--color-bg-body) !important;
+  height: 1px;
+  text-align: left;
+  clip-path: polygon(
+    0% 20%,
+    20% 20%,
+    30% 0%,
+    70% 0%,
+    80% 20%,
+    100% 20%,
+    100% 80%,
+    80% 80%,
+    70% 100%,
+    30% 100%,
+    20% 80%,
+    0% 80%
+  );
+  /* clip-path: polygon(
+    12% 0,
+    88% 0%,
+    100% 33.3333333%,
+    100% 66.6666666%,
+    88% 100%,
+    12% 100%,
+    0% 66.6666666%,
+    0% 33.333333%
+  ); */
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-black-ops) !important;
+  z-index: var(--z-nav-link);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  z-index: var(--z-nav-after);
+  opacity: 1;
+  animation: fill 0.5s forwards;
+}
+
+.nav-icon {
+  pointer-events: none;
+}
+
+/* ─── Hamburger Toggler ─────────────────────────────────────── */
+
+.navbar-toggler {
+  color: var(--color-text-white);
+  border: 0;
+  width: var(--toggler-width);
+  height: var(--toggler-height);
+  position: relative;
+}
+
+.navbar-toggler span {
+  margin: 0;
+  padding: 0;
+}
+
+.toggler-icon {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: var(--toggler-bar-h);
+  background-color: var(--color-text-white);
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.2s ease-in-out;
+}
+
+.middle-bar {
+  margin-top: 0px;
+}
+
+/* Open state (toggler not collapsed) */
+.navbar-toggler .top-bar    { margin-top: 0;     transform: rotate(135deg); }
+.navbar-toggler .middle-bar { opacity: 0; }
+.navbar-toggler .bottom-bar { margin-top: 0;     transform: rotate(-135deg); }
+
+/* Closed state (toggler collapsed) */
+.navbar-toggler.collapsed .top-bar    { margin-top: -16px; transform: rotate(0deg); }
+.navbar-toggler.collapsed .middle-bar { opacity: 1; }
+.navbar-toggler.collapsed .bottom-bar { margin-top: 16px;  transform: rotate(0deg); }
+
+.navbar-collapse {
+  flex-grow: 0 !important;
+  flex-basis: 0 !important;
+}
+
+/* ─── Offcanvas / Settings Panel ────────────────────────────── */
+
+#settings-btn i {
+  padding-top: 3px;
+}
+
+.offcanvas {
+  --bs-offcanvas-width: var(--offcanvas-width);
+}
+
+.offcanvas-header button:hover {
+  background-color: var(--color-bg-body) !important;
+}
+
+/* ─── Carousel ──────────────────────────────────────────────── */
+
+.carousel-inner img {
+  aspect-ratio: 12/10;
+}
+
+/* ─── Row Group (dividers) ──────────────────────────────────── */
+
+.row.row-group > div {
+  border-right: 0;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.row.row-group > div:last-child {
+  border-bottom: none;
+}
+
+/* ─── Footer ────────────────────────────────────────────────── */
+
+.footer-svg {
+  width: 11%;
+}
+
+.payment-icon {
+  overflow: hidden;
+}
+
+.payment-icon ul {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: right;
+}
+
+.payment-icon img {
+  max-height: 38px;
+  background-color: var(--color-icon-bg);
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--color-secondary);
+  margin-right: var(--space-xs);
+  object-fit: contain;
+  aspect-ratio: 9/6;
+}

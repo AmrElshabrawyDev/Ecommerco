@@ -1,0 +1,90 @@
+/* ============================================================
+   base.css — Global Reset & Foundation
+   Scrollbar, box-model, typography defaults, body, layout.
+   ============================================================ */
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-btn);
+  border-radius: var(--scrollbar-radius);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+
+/* ─── Box Model ─────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+/* ─── Links ─────────────────────────────────────────────────── */
+
+a {
+  text-decoration: none;
+  color: var(--color-text-white) !important;
+}
+
+/* ─── Lists ─────────────────────────────────────────────────── */
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Typography ────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+nav {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+/* ─── Body ──────────────────────────────────────────────────── */
+
+body {
+  background-color: var(--color-bg-body);
+  font-family: var(--font-body);
+  /* overflow-x: hidden; */
+}
+
+/* ─── Section & Header Layout ───────────────────────────────── */
+
+header,
+section {
+  padding: var(--space-md) 0;
+  margin: var(--space-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Accessibility: Reduced Motion ─────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

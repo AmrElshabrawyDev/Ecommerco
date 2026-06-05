@@ -1,0 +1,115 @@
+/* ============================================================
+   product.css — Product-Specific Styles
+   All styles scoped to product cards, brand images,
+   star ratings, wishlist, compare, and product info.
+   ============================================================ */
+
+/* ─── Brand Images (Brand Page) ─────────────────────────────── */
+
+.brand-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+
+.brand-img:hover {
+  animation: shake 2s ease-in;
+}
+
+/* ─── Product Card ──────────────────────────────────────────── */
+
+.product-card {
+  background: #0000;
+  box-shadow: none !important;
+  border: 0;
+  color: var(--color-text-white);
+  transition: var(--transition-base);
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.product-card:hover {
+  background-color: var(--color-primary);
+}
+
+.card-header {
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* ─── Product Actions ───────────────────────────────────────── */
+
+.product-compare {
+  opacity: 0;
+  color: var(--color-text-muted);
+  transition: var(--transition-base);
+}
+
+.product-wishlist {
+  width: var(--wishlist-size);
+  height: var(--wishlist-size);
+  font-size: 20px;
+  background-color: var(--color-secondary);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* ─── Product Image ─────────────────────────────────────────── */
+
+.product-img {
+  aspect-ratio: 6/6;
+  object-fit: contain;
+}
+
+/* ─── Product Info ──────────────────────────────────────────── */
+
+.product-category {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm);
+  transition: var(--transition-normal);
+  font-weight: 700;
+}
+
+/* ─── Hover States ──────────────────────────────────────────── */
+
+.product-compare:hover,
+.product-wishlist:hover,
+.product-category:hover {
+  color: var(--color-text-white);
+  background-color: var(--color-primary);
+}
+
+.product-card:hover .product-compare {
+  opacity: 1;
+}
+
+/* ─── Star Rating ───────────────────────────────────────────── */
+
+.product-rating {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.product-rating::after {
+  content: var(--star-content);
+  color: var(--color-star-empty);
+}
+
+.rating-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  /* width: 20%; — set dynamically via inline style */
+}
+
+.rating-star::after {
+  content: var(--star-content);
+  color: var(--color-star-filled);
+  display: inline-block;
+}

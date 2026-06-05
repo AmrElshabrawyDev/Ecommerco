@@ -1,0 +1,138 @@
+/* ============================================================
+   utilities.css — Helper / Utility Classes
+   Reusable single-purpose classes for transitions, colors,
+   backgrounds, text, cursors, z-index, and effects.
+   ============================================================ */
+
+/* ─── Transitions ───────────────────────────────────────────── */
+
+.transition {
+  transition: var(--transition-slow) !important;
+}
+
+.transition-2 {
+  transition: var(--transition-fast) !important;
+}
+
+/* ─── Background Colors ─────────────────────────────────────── */
+
+.bg-black-ops {
+  background: var(--color-black-ops) !important;
+}
+
+.bg-dark-ops {
+  background: var(--color-primary) !important;
+}
+
+.bg-light-ops {
+  background: var(--color-secondary) !important;
+}
+
+.bg-primary-ops {
+  background-color: var(--color-bg-body);
+}
+
+/* ─── Text Colors ───────────────────────────────────────────── */
+
+.text-primary-ops {
+  color: var(--color-bg-body);
+}
+
+.text-inherit {
+  color: inherit !important;
+}
+
+.text-info {
+  color: var(--color-btn) !important;
+}
+
+/* ─── Font Sizes ────────────────────────────────────────────── */
+
+.fs-7 {
+  font-size: 0.8rem !important;
+}
+
+.fs-8 {
+  font-size: 0.5rem !important;
+}
+
+/* ─── Layout Helpers ────────────────────────────────────────── */
+
+.clear {
+  clear: both;
+}
+
+/* ─── Pointer / Cursor ──────────────────────────────────────── */
+
+.pointer-event {
+  pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ─── Z-index ───────────────────────────────────────────────── */
+
+.z-1000 {
+  z-index: 1000;
+}
+
+/* ─── Borders ───────────────────────────────────────────────── */
+
+.border-light {
+  border-color: var(--color-secondary) !important;
+}
+
+/* ─── Glow Effects ──────────────────────────────────────────── */
+
+.drop-shadow {
+  filter:
+    drop-shadow(0px 0px 1px var(--color-btn))
+    drop-shadow(0px 0px 2px var(--color-btn))
+    drop-shadow(0px 0px 3px var(--color-btn));
+  animation: shadow 2s ease-in infinite alternate-reverse;
+}
+
+.box-shadow {
+  box-shadow:
+    0px 0px 12px var(--color-btn),
+    inset 0px 0px 12px var(--color-btn);
+  animation: box-shadow 2s ease-in infinite alternate-reverse;
+}
+
+/* ─── Clip Paths ────────────────────────────────────────────── */
+
+.clip-path-navbar::after,
+.clip-path-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  width: 60px;
+  background-color: var(--color-black-ops);
+  pointer-events: none;
+  z-index: var(--z-clip-bg);
+}
+
+.clip-path-navbar::after {
+  left: -14px;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 60%, 0% 40%);
+}
+
+.clip-path-navbar::before {
+  right: -14px;
+  clip-path: polygon(75% 0%, 0% 0%, 0% 100%, 75% 100%, 100% 60%, 100% 40%);
+}
+
+.clip-path-top {
+  transform: translateY(-18%);
+  clip-path: polygon(10% 0%, 90% 0%, 98% 100%, 2% 100%);
+}
+
+.clip-path-bottom {
+  width: 130%;
+  transform: translate(-50%, 18%);
+  clip-path: polygon(2% 0%, 98% 0%, 90% 100%, 10% 100%);
+}

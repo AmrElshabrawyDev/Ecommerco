@@ -1,0 +1,76 @@
+/* ============================================================
+   variables.css — Design Tokens
+   Single source of truth for all CSS custom properties.
+   Change any value here to update the entire design system.
+   ============================================================ */
+
+:root {
+  /* ── Fonts ─────────────────────────────────────────────── */
+  --font-heading: "blackopsone";
+  --font-body: "Roboto";
+
+  /* ── Brand Colors ──────────────────────────────────────── */
+  --color-bg-body: #1e88e5;
+  --color-primary: rgba(0, 0, 0, 0.2);
+  --color-secondary: rgba(255, 255, 255, 0.149);
+  --color-black-ops: rgba(0, 0, 0, 0.902);
+  --color-btn: #fff;
+
+  /* ── Theme Swatches ────────────────────────────────────── */
+  --theme-blue:   #1e88e5;
+  --theme-pink:   #db577f;
+  --theme-green:  #15dc0b;
+  --theme-dark:   #404756;
+  --theme-purple: #7978ed;
+  --theme-gold:   #daa21c;
+
+  /* ── Text Shades ───────────────────────────────────────── */
+  --color-text-white: #fff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --color-text-faint: rgba(255, 255, 255, 0.749);
+
+  /* ── Borders ───────────────────────────────────────────── */
+  --color-border-active:    #eeefff;
+  --color-border-tag-hover: rgba(255, 255, 255, 0.45);
+
+  /* ── Star Rating ───────────────────────────────────────── */
+  --color-star-empty:  #797c84;
+  --color-star-filled: var(--color-btn);
+  --star-content: "\2605 \2605 \2605 \2605 \2605";
+
+  /* ── Misc ──────────────────────────────────────────────── */
+  --color-form-focus-bg: #1e1a1a;
+  --color-icon-bg:       rgba(255, 255, 255, 0.122);
+
+  /* ── Transitions ───────────────────────────────────────── */
+  --transition-fast:   all 0.1ms linear;
+  --transition-base:   all 0.2s ease-in-out;
+  --transition-normal: all 0.3s ease-in-out;
+  --transition-slow:   all 0.5s ease-in-out;
+
+  /* ── Scrollbar ─────────────────────────────────────────── */
+  --scrollbar-width-sm: 4px;
+  --scrollbar-width-lg: 10px;
+  --scrollbar-radius:   4px;
+
+  /* ── Z-index ───────────────────────────────────────────── */
+  --z-nav-link:  10;
+  --z-nav-after: -10;
+  --z-clip-bg:   -1;
+
+  /* ── Sizes ─────────────────────────────────────────────── */
+  --brand-svg-size:    40px;
+  --wishlist-size:     2rem;
+  --offcanvas-width:   300px;
+  --toggler-width:     25px;
+  --toggler-height:    20px;
+  --toggler-bar-h:     2px;
+  --theme-swatch-size: 36px;
+
+  /* ── Spacing ───────────────────────────────────────────── */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+}
