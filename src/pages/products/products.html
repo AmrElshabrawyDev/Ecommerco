@@ -1,1 +1,390 @@
-<h1>products page</h1>
+<!-- Start Header -->
+<header class="text-white d-flex">
+  <div class="container border-bottom mt-5 pb-4 pt-5">
+    <div class="w-75 mx-auto d-flex align-items-center justify-content-between">
+      <form
+        id="search-box"
+        class="input-group col mb-3 d-flex align-items-center"
+      >
+        <button
+          id="header-search-btn"
+          class="d-flex align-items-center btn bg-light-ops text-light border-end-0 rounded-end-0 border-white border-opacity-25"
+          type="submit"
+        >
+          <i class="m-0 bx bx-search"></i>
+          Search
+        </button>
+        <input
+          type="text"
+          class="form-control shadow-none text-white border-end-0 rounded-end-0 rounded-start-0 bg-light-ops border-white border-opacity-25"
+          id="search-input"
+          placeholder=".......Search"
+        />
+        <div class="position-relative">
+          <div
+            class="position-absolute end-0 top-50 h-100 translate-middle-y pointer-event"
+          >
+            <i class="bx bx-chevron-down bx-sm p-2"></i>
+          </div>
+          <select
+            title="search by"
+            class="form-select form-select cursor-pointer shadow-none bg-black-ops text-white rounded-start-0 border-white border-opacity-25"
+            id="search-by"
+          >
+            <option value="Default" selected>Search by Default</option>
+            <option value="category">Search by Category</option>
+            <option value="brand">Search by Brand</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
+
+<!-- Start Product Section -->
+<section>
+  <div class="container-lg">
+    <div class="row">
+      <!-- Sidebar Filters -->
+      <div class="col-12 col-lg-3 mb-4 mb-lg-0">
+        <button
+          title="slider alt"
+          class="btn btn-lighter text-white position-fixed start-0 top-50 z-3 translate-middle-y d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasResponsive"
+          aria-controls="offcanvasResponsive"
+        >
+          <i class="bx bx-slider-alt"></i>
+        </button>
+        <div
+          class="offcanvas-lg offcanvas-start bg-dark-ops rounded-3 text-white w-100 p-3"
+          tabindex="-1"
+          id="offcanvasResponsive"
+          aria-labelledby="offcanvasResponsiveLabel"
+        >
+          <div
+            class="offcanvas-header d-flex justify-content-between d-lg-none"
+          >
+            <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">
+              filter
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              data-bs-target="#offcanvasResponsive"
+              aria-label="Close"
+            ></button>
+          </div>
+          <hr class="mt-0 d-lg-none" />
+          <div class="offcanvas-body flex-column p-0">
+            <div>
+              <h6 class="mb-3 ps-3">collections</h6>
+              <ul
+                id="collection-list"
+                class="collection-list p-0 fw-bold text-capitalize list-none"
+              >
+                <li
+                  class="collection-item py-2 rounded-end-pill active cursor-pointer ps-3"
+                  data-collection="all"
+                >
+                  <div class="d-flex justify-content-between">
+                    All <span data-count="all">0</span>
+                  </div>
+                </li>
+                <li
+                  class="collection-item py-2 rounded-end-pill cursor-pointer ps-3"
+                  data-collection="men"
+                >
+                  <div class="d-flex justify-content-between">
+                    mens <span data-count="men">0</span>
+                  </div>
+                </li>
+                <li
+                  class="collection-item py-2 rounded-end-pill cursor-pointer ps-3"
+                  data-collection="women"
+                >
+                  <div class="d-flex justify-content-between">
+                    women <span data-count="women">0</span>
+                  </div>
+                </li>
+                <li
+                  class="collection-item py-2 rounded-end-pill cursor-pointer ps-3"
+                  data-collection="accessories"
+                >
+                  <div class="d-flex justify-content-between">
+                    accessories <span data-count="accessories">0</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <hr />
+            <div class="ps-3">
+              <h6 class="mb-3">price</h6>
+              <div class="form-check">
+                <input
+                  class="form-check-input transition"
+                  type="radio"
+                  name="priceRange"
+                  id="priceAll"
+                  value="all"
+                  checked
+                />
+                <label class="form-check-label" for="priceAll"> All </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input transition"
+                  type="radio"
+                  name="priceRange"
+                  id="price0_30"
+                  value="0-30"
+                />
+                <label class="form-check-label" for="price0_30">
+                  $0 : $30
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input transition"
+                  type="radio"
+                  name="priceRange"
+                  id="price30_50"
+                  value="30-50"
+                />
+                <label class="form-check-label" for="price30_50">
+                  $30 : $50
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input transition"
+                  type="radio"
+                  name="priceRange"
+                  id="price50_100"
+                  value="50-100"
+                />
+                <label class="form-check-label" for="price50_100">
+                  $50 : $100
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input transition"
+                  type="radio"
+                  name="priceRange"
+                  id="price100_150"
+                  value="100-150"
+                />
+                <label class="form-check-label" for="price100_150">
+                  $100 : $150
+                </label>
+              </div>
+            </div>
+            <hr />
+            <div class="ps-3">
+              <h6 class="mb-3">brands</h6>
+              <ul class="p-0 list-none" id="brand-list-filters">
+                <li>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input transition brand-checkbox"
+                      type="checkbox"
+                      id="brand-adidas"
+                      value="adidas"
+                    />
+                    <label class="form-check-label" for="brand-adidas">
+                      adidas
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input transition brand-checkbox"
+                      type="checkbox"
+                      id="brand-altea"
+                      value="altea"
+                    />
+                    <label class="form-check-label" for="brand-altea">
+                      altea
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input transition brand-checkbox"
+                      type="checkbox"
+                      id="brand-barbie"
+                      value="barbie"
+                    />
+                    <label class="form-check-label" for="brand-barbie">
+                      barbie
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input transition brand-checkbox"
+                      type="checkbox"
+                      id="brand-boden"
+                      value="boden"
+                    />
+                    <label class="form-check-label" for="brand-boden">
+                      boden
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input transition brand-checkbox"
+                      type="checkbox"
+                      id="brand-cat"
+                      value="cat"
+                    />
+                    <label class="form-check-label" for="brand-cat">
+                      cat
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Content Area -->
+      <div class="product-header col-12 col-lg-9">
+        <div>
+          <!-- Sorting and Pagination View Options -->
+          <div
+            class="d-flex align-items-center mb-3 gap-2 text-white justify-content-between flex-wrap"
+          >
+            <div class="d-flex flex-wrap gap-3">
+              <div
+                class="d-flex align-items-center position-relative flex-nowrap"
+              >
+                <p class="mb-0 text-nowrap text-white">Sort By:</p>
+                <div
+                  class="position-absolute end-0 top-50 h-100 translate-middle-y pointer-event"
+                >
+                  <i class="bx bx-chevron-down bx-sm p-2"></i>
+                </div>
+                <select
+                  title="sort by"
+                  id="form-sort"
+                  class="form-select ms-2 bg-dark-ops border-1 border-white border-opacity-25 text-white"
+                >
+                  <option class="bg-black" value="Default" selected>
+                    Default sorting
+                  </option>
+                  <option class="bg-black" value="rating">
+                    Sort by rating
+                  </option>
+                  <option class="bg-black" value="title">Sort by name</option>
+                  <option class="bg-black" value="price">Sort by price</option>
+                </select>
+              </div>
+              <div
+                class="d-flex align-items-center position-relative flex-nowrap"
+              >
+                <p class="mb-0 text-nowrap text-white">Show:</p>
+                <div
+                  class="position-absolute end-0 top-50 h-100 translate-middle-y pointer-event"
+                >
+                  <i class="bx bx-chevron-down bx-sm p-2"></i>
+                </div>
+                <select
+                  title="limit"
+                  id="form-limit"
+                  class="form-select ms-2 bg-dark-ops border-1 border-white border-opacity-25 text-white"
+                >
+                  <option class="bg-black" selected>9</option>
+                  <option class="bg-black">12</option>
+                  <option class="bg-black">16</option>
+                  <option class="bg-black">20</option>
+                  <option class="bg-black">50</option>
+                </select>
+              </div>
+            </div>
+            <div class="d-flex gap-2">
+              <div>
+                <a
+                  title="grid"
+                  href="#"
+                  class="btn btn-lighter active"
+                  id="btn-grid-view"
+                >
+                  <i class="bx bxs-grid me-0"></i>
+                </a>
+              </div>
+              <div>
+                <a
+                  title="list"
+                  href="#"
+                  class="btn btn-lighter"
+                  id="btn-list-view"
+                >
+                  <i class="bx bx-list-ul me-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Grid/List Container -->
+          <div>
+            <div
+              id="product-div"
+              class="product-div row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4"
+            >
+              <!-- Products dynamically loaded here -->
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- Pagination -->
+          <div
+            class="d-flex justify-content-between align-items-center"
+            aria-label="page navigation"
+          >
+            <ul class="pagination pagination-prev mb-0">
+              <li class="page-item" id="btn-prev-page">
+                <a
+                  href="#"
+                  class="page-link border-1 border-white border-opacity-25 bg-dark-ops d-flex align-items-center text-white"
+                >
+                  <i class="bx bx-chevron-left me-2"></i>
+                  <small class="fs-6">prev</small>
+                </a>
+              </li>
+            </ul>
+            <ul
+              class="pagination pagination-list mb-0 d-flex gap-1"
+              id="pagination-list-nums"
+            >
+              <!-- Page numbers loaded here -->
+            </ul>
+            <ul class="pagination pagination-next mb-0">
+              <li class="page-item" id="btn-next-page">
+                <a
+                  href="#"
+                  class="page-link border-1 border-white border-opacity-25 bg-dark-ops d-flex align-items-center text-white"
+                >
+                  <small class="fs-6">next</small>
+                  <i class="bx bx-chevron-right ms-2"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Product Section -->

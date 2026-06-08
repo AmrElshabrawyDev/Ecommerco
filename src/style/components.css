@@ -109,14 +109,19 @@
   padding: var(--space-sm) 0.8rem;
   border-radius: 0 5rem 5rem 0;
   margin: 0 0.8rem 0 0;
-  box-shadow: 1.5px 0 2px 2px #0004, inset -1.5px 0 2px 2px #ffffff4f;
-  transition: var(--transition-slow);
+  box-shadow:
+    1.5px 0 2px 2px #0004,
+    inset -1.5px 0 2px 2px #ffffff4f;
+  transition: var(--transition-normal);
 }
 
-.collection-item div:hover {
+.collection-item:hover div,
+.collection-item.active div {
   border-radius: 5rem 0 0 5rem;
   margin: 0 0 0 0.8rem;
-  box-shadow: -1.5px 0 2px 2px #0004, inset 1.5px 0 2px 2px #ffffff4f;
+  box-shadow:
+    -1.5px 0 2px 2px #0004,
+    inset 1.5px 0 2px 2px #ffffff4f;
 }
 
 /* ─── Theme Color Swatches ──────────────────────────────────── */
@@ -132,12 +137,24 @@
   transition: var(--transition-normal);
 }
 
-.color-themes .bg-theme:nth-child(1) { background: var(--theme-blue); }
-.color-themes .bg-theme:nth-child(2) { background: var(--theme-pink); }
-.color-themes .bg-theme:nth-child(3) { background: var(--theme-green); }
-.color-themes .bg-theme:nth-child(4) { background: var(--theme-dark); }
-.color-themes .bg-theme:nth-child(5) { background: var(--theme-purple); }
-.color-themes .bg-theme:nth-child(6) { background: var(--theme-gold); }
+.color-themes .bg-theme:nth-child(1) {
+  background: var(--theme-blue);
+}
+.color-themes .bg-theme:nth-child(2) {
+  background: var(--theme-pink);
+}
+.color-themes .bg-theme:nth-child(3) {
+  background: var(--theme-green);
+}
+.color-themes .bg-theme:nth-child(4) {
+  background: var(--theme-dark);
+}
+.color-themes .bg-theme:nth-child(5) {
+  background: var(--theme-purple);
+}
+.color-themes .bg-theme:nth-child(6) {
+  background: var(--theme-gold);
+}
 
 .color-themes .bg-theme.active {
   border: 2px solid var(--color-border-active);
