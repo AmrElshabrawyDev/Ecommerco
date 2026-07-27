@@ -24,12 +24,14 @@ export function router() {
   const urlPageTitle = "JS Single Page Application Router";
   console.log("🚀 ~ router ~ urlPageTitle:", urlPageTitle);
 
-  // Create document click that watches the nav links only
+  // Create document click that watches all SPA links (nav, footer, cards, etc.)
   document.addEventListener("click", (e) => {
-    const target = e.target as HTMLAnchorElement | null;
-    if (!target || !target.matches("nav a")) return;
+    const anchor = (e.target as HTMLElement).closest<HTMLAnchorElement>("a");
+    if (!anchor) return;
+    const href = anchor.getAttribute("href");
+    if (!href || href === "#" || href.startsWith("http://") || href.startsWith("https://") || href.startsWith("javascript:")) return;
     e.preventDefault();
-    urlRoute(target.href);
+    urlRoute(anchor.href);
   });
 
   // Create an object that maps the url to the template, title, and description
