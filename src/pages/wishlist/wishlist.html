@@ -1,1 +1,41 @@
-<h1>wishlist page</h1>
+<!-- Start Header / Breadcrumbs -->
+<header class="text-white d-flex">
+  <div class="container border-bottom mt-5 pb-4 pt-5">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+      <div>
+        <h2 class="mb-1 text-capitalize fw-bold">My Wishlist</h2>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/" class="text-white-50 text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Wishlist</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-2 bg-dark-ops px-3 py-2 rounded-3 border border-white border-opacity-10">
+          <i class="bx bx-heart bx-sm text-danger"></i>
+          <span id="wishlist-header-count" class="fw-bold">0 saved items</span>
+        </div>
+        <button id="btn-move-all-cart" class="btn btn-lighter btn-ecommerco text-uppercase px-3 py-2 fw-semibold d-none">
+          <i class="bx bx-cart-add me-1 fs-5"></i> Move All to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
+
+<!-- Start Wishlist Section -->
+<section class="py-5">
+  <div class="container">
+    <!-- Dynamic Content Container -->
+    <div id="wishlist-main-container">
+      <div class="text-center py-5">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading wishlist...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Wishlist Section -->
