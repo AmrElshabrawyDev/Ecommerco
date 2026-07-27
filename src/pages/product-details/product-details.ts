@@ -301,14 +301,14 @@ export function initProductDetails(): void {
           // Remove
           wishlist = wishlist.filter((id) => id !== String(product.id));
           if (icon) {
-            icon.className = "bx bx-heart fs-4";
+            icon.className = "bx bx-heart fs-4 m-0";
             icon.classList.remove("text-danger");
           }
         } else {
           // Add
           wishlist.push(String(product.id));
           if (icon) {
-            icon.className = "bx bxs-heart fs-4 text-danger";
+            icon.className = "bx bxs-heart fs-4 m-0 text-danger";
           }
         }
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
