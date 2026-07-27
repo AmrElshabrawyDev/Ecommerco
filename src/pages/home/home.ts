@@ -116,7 +116,7 @@ export function initHome(): void {
           <a href="/product-details?id=${data.id}" onclick="event.preventDefault(); route('/product-details?id=${data.id}')" aria-label="View ${data.title}">
             <img
               class="card-img-top product-img"
-              src="..${data.images[0]}"
+              src="${data.images[0]}"
               alt="${data.title}"
               loading="lazy"
             />

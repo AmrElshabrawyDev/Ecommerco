@@ -13,6 +13,13 @@ import {
 } from "./pages/index";
 
 export function router() {
+  // Pre-load all HTML templates as raw strings at build time via Vite
+  const templates = import.meta.glob<string>("./pages/**/*.html", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  });
+
   const pageCache: { [key: string]: string } = {};
   const urlPageTitle = "JS Single Page Application Router";
   console.log("🚀 ~ router ~ urlPageTitle:", urlPageTitle);
@@ -131,9 +138,13 @@ export function router() {
     }
 
     try {
-      const html = await fetch(`/src/pages${route.template}`).then((res) =>
-        res.text()
-      );
+      const templateKey = `./pages${route.template}`;
+      let html = templates[templateKey];
+      if (!html) {
+        html = await fetch(`/src/pages${route.template}`).then((res) =>
+          res.text()
+        );
+      }
       pageCache[location] = html; // Cache the page content
       updateContent(html);
 

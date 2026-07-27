@@ -85,7 +85,7 @@ export function initProductDetails(): void {
       <div class="col-lg-6">
         <!-- Main Image Display -->
         <div class="product-detail-gallery p-3 rounded-3 bg-light-ops border border-white border-opacity-10 d-flex justify-content-center align-items-center position-relative overflow-hidden mb-3">
-          <img id="main-product-img" class="img-fluid" src="..${product.images[0]}" alt="${product.title}" style="max-height: 450px; object-fit: contain; width: 100%;" />
+          <img id="main-product-img" class="img-fluid" src="${product.images[0]}" alt="${product.title}" style="max-height: 450px; object-fit: contain; width: 100%;" />
         </div>
         
         <!-- Thumbnail gallery (if multiple images) -->
@@ -93,7 +93,7 @@ export function initProductDetails(): void {
         <div class="d-flex gap-2 overflow-auto pb-2 thumbnail-row">
           ${product.images.map((imgUrl, index) => `
             <div class="product-detail-thumb rounded-2 bg-light-ops border border-opacity-10 cursor-pointer overflow-hidden p-1 ${index === 0 ? 'active' : ''}" style="width: 80px; height: 80px; flex-shrink: 0;" data-index="${index}">
-              <img class="img-fluid w-100 h-100" src="..${imgUrl}" alt="${product.title} view ${index + 1}" style="object-fit: contain;" />
+              <img class="img-fluid w-100 h-100" src="${imgUrl}" alt="${product.title} view ${index + 1}" style="object-fit: contain;" />
             </div>
           `).join('')}
         </div>
