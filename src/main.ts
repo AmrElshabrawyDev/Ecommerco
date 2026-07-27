@@ -141,15 +141,31 @@ if (btnResetPrefs) {
 function showSettingsToast(type: "success" | "info" | "warning", message: string): void {
   const container = document.getElementById("settings-alert-container");
   if (!container) return;
+
+  const bgStyle =
+    type === "success"
+      ? "background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.6);"
+      : type === "warning"
+      ? "background: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid rgba(241, 196, 15, 0.6);"
+      : "background: rgba(30, 136, 229, 0.25); color: #4fc3f7; border: 1px solid rgba(79, 195, 247, 0.6);";
+
+  const iconClass =
+    type === "success"
+      ? "bx-check-circle"
+      : type === "warning"
+      ? "bx-error-circle"
+      : "bx-info-circle";
+
   container.innerHTML = `
-    <div class="alert alert-${type} bg-opacity-25 border border-${type} border-opacity-50 text-white rounded-3 p-2 fs-7 text-center m-0 animate__animated animate__fadeIn" role="alert">
-      <i class="bx ${type === "success" ? "bx-check-circle text-success" : type === "warning" ? "bx-error text-warning" : "bx-info-circle text-info"} me-1"></i>
-      ${message}
+    <div class="rounded-3 p-3 fs-7 text-center m-0 shadow-lg d-flex align-items-center justify-content-center gap-2" style="${bgStyle} font-weight: 600;" role="alert">
+      <i class="bx ${iconClass} fs-5"></i>
+      <span>${message}</span>
     </div>
   `;
+
   setTimeout(() => {
     container.innerHTML = "";
-  }, 3000);
+  }, 3500);
 }
 
 // End Settings Box & Preferences Controller
