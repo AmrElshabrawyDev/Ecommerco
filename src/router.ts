@@ -162,6 +162,7 @@ export function router() {
       );
       descriptionElement?.setAttribute("content", route.description);
       updateActiveNavLink();
+      updateNavbarBadges();
     } catch (error) {
       console.error("Error loading the page:", error);
       contentDiv!.innerHTML = `<div style="height: 650px" class="d-flex justify-content-center align-items-center"><h2>Failed to load content.</h2></div>`;
@@ -202,4 +203,18 @@ export function router() {
   
     // Call the urlLocationHandler function to handle the initial url
   urlLocationHandler();
+  updateNavbarBadges();
+}
+
+// Global helper to keep Cart and Wishlist navbar counters synchronized
+export function updateNavbarBadges(): void {
+  const cart: string[] = JSON.parse(localStorage.getItem("cart") ?? "[]");
+  document.querySelectorAll<HTMLElement>(".cart-badge, .badge-notification").forEach((b) => {
+    b.textContent = String(cart.length);
+  });
+
+  const wishlist: string[] = JSON.parse(localStorage.getItem("wishlist") ?? "[]");
+  document.querySelectorAll<HTMLElement>(".wishlist-badge").forEach((b) => {
+    b.textContent = String(wishlist.length);
+  });
 }

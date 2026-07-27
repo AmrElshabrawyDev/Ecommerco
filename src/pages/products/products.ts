@@ -8,6 +8,7 @@
 
 import { productApi } from "../../lib/api";
 import type { Product, ApiResponse } from "../../lib/types";
+import { updateNavbarBadges } from "../../router";
 
 export function initProducts(): void {
   console.log("🚀 ~ products page initialization ~ 🚀");
@@ -706,6 +707,7 @@ export function initProducts(): void {
     }
 
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateNavbarBadges();
   };
 
   // ─── Cart Handling ────────────────────────────────────────
@@ -716,11 +718,7 @@ export function initProducts(): void {
     const cart: string[] = JSON.parse(localStorage.getItem("cart") ?? "[]");
     cart.push(productId);
     localStorage.setItem("cart", JSON.stringify(cart));
-
-    const badge = document.querySelector<HTMLElement>(".badge-notification");
-    if (badge) {
-      badge.textContent = String(cart.length);
-    }
+    updateNavbarBadges();
   };
 
   // ─── Initialize ───────────────────────────────────────────

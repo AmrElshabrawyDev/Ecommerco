@@ -5,6 +5,7 @@
 
 import { productApi } from "../../lib/api";
 import type { Product, ApiResponse } from "../../lib/types";
+import { updateNavbarBadges } from "../../router";
 
 export function initHome(): void {
   console.log("🚀 ~ Amr Elshabrawy ~ Home Page Init 🚀");
@@ -186,6 +187,7 @@ export function initHome(): void {
       wishlist.push(productId!);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
+    updateNavbarBadges();
   };
 
   // ─── Cart Logic ───────────────────────────────────────────
@@ -196,10 +198,7 @@ export function initHome(): void {
 
     cart.push(productId!);
     localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Update cart badge count
-    const badge = document.querySelector<HTMLElement>(".badge-notification");
-    if (badge) badge.textContent = String(cart.length);
+    updateNavbarBadges();
   };
 
   // ─── Helpers ──────────────────────────────────────────────

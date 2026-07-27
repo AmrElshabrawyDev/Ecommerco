@@ -6,6 +6,7 @@
 
 import { productApi } from "../../lib/api";
 import type { Product, ApiResponse } from "../../lib/types";
+import { updateNavbarBadges } from "../../router";
 
 export function initProductDetails(): void {
   console.log("🚀 ~ product details initialization ~ 🚀");
@@ -13,7 +14,7 @@ export function initProductDetails(): void {
   // ─── Query Parameter Extraction ───────────────────────────
   const urlParams = new URLSearchParams(window.location.search);
   const productIdStr = urlParams.get("id");
-  
+
   const detailsContainer = document.getElementById("product-details-container");
   const relatedGrid = document.getElementById("related-products-grid");
   const breadcrumbTitle = document.getElementById("detail-breadcrumb-title");
@@ -33,7 +34,7 @@ export function initProductDetails(): void {
   }
 
   const productId = parseInt(productIdStr, 10);
-  
+
   // State for quantity selection
   let selectedQty = 1;
 
@@ -42,12 +43,12 @@ export function initProductDetails(): void {
     .getById(productId)
     .then((response: ApiResponse<Product>) => {
       const product = response.data;
-      
+
       // Update breadcrumbs
       if (breadcrumbTitle) {
         breadcrumbTitle.textContent = product.title;
       }
-      
+
       renderProductDetails(product);
       fetchRelatedProducts(product);
     })
@@ -77,7 +78,7 @@ export function initProductDetails(): void {
 
     // Check if item is already in wishlist
     const wishlist: string[] = JSON.parse(
-      localStorage.getItem("wishlist") ?? "[]"
+      localStorage.getItem("wishlist") ?? "[]",
     );
     const isWishlisted = wishlist.includes(String(product.id));
 
@@ -89,15 +90,23 @@ export function initProductDetails(): void {
         </div>
         
         <!-- Thumbnail gallery (if multiple images) -->
-        ${product.images.length > 1 ? `
+        ${
+          product.images.length > 1
+            ? `
         <div class="d-flex gap-2 overflow-auto pb-2 thumbnail-row">
-          ${product.images.map((imgUrl, index) => `
-            <div class="product-detail-thumb rounded-2 bg-light-ops border border-opacity-10 cursor-pointer overflow-hidden p-1 ${index === 0 ? 'active' : ''}" style="width: 80px; height: 80px; flex-shrink: 0;" data-index="${index}">
+          ${product.images
+            .map(
+              (imgUrl, index) => `
+            <div class="product-detail-thumb rounded-2 bg-light-ops border border-opacity-10 cursor-pointer overflow-hidden p-1 ${index === 0 ? "active" : ""}" style="width: 80px; height: 80px; flex-shrink: 0;" data-index="${index}">
               <img class="img-fluid w-100 h-100" src="${imgUrl}" alt="${product.title} view ${index + 1}" style="object-fit: contain;" />
             </div>
-          `).join('')}
+          `,
+            )
+            .join("")}
         </div>
-        ` : ''}
+        `
+            : ""
+        }
       </div>
 
       <div class="col-lg-6">
@@ -123,23 +132,33 @@ export function initProductDetails(): void {
           <div class="mb-4">
             <div class="d-flex align-items-center gap-3">
               <span class="fs-2 fw-bold text-white">$${discountedPrice}</span>
-              ${product.discountPercentage > 0 ? `
+              ${
+                product.discountPercentage > 0
+                  ? `
                 <span class="fs-5 text-decoration-line-through text-white-50">$${product.price}</span>
                 <span class="badge bg-danger text-uppercase">${product.discountPercentage.toFixed(0)}% OFF</span>
-              ` : ''}
+              `
+                  : ""
+              }
             </div>
           </div>
           
           <!-- Stock Status -->
           <div class="mb-4 d-flex align-items-center gap-2">
             <span>Stock Status:</span>
-            ${product.stock > 10 ? `
+            ${
+              product.stock > 10
+                ? `
               <span class="badge bg-success">In Stock (${product.stock} available)</span>
-            ` : product.stock > 0 ? `
+            `
+                : product.stock > 0
+                  ? `
               <span class="badge bg-warning text-dark">Low Stock (Only ${product.stock} left!)</span>
-            ` : `
+            `
+                  : `
               <span class="badge bg-danger">Out of Stock</span>
-            `}
+            `
+            }
           </div>
           
           <!-- Short Description -->
@@ -149,23 +168,23 @@ export function initProductDetails(): void {
           <div class="d-flex flex-wrap align-items-center gap-3 mb-5 pt-3 border-top border-white border-opacity-10">
             <!-- Quantity selector -->
             <div class="quantity-selector d-flex align-items-center bg-light-ops border border-white border-opacity-10 rounded-pill p-1">
-              <button id="btn-qty-minus" class="btn btn-sm btn-link text-white text-decoration-none px-3" ${product.stock === 0 ? 'disabled' : ''}>
+              <button id="btn-qty-minus" class="btn btn-sm btn-link text-white text-decoration-none px-3" ${product.stock === 0 ? "disabled" : ""}>
                 <i class="bx bx-minus"></i>
               </button>
-              <input id="input-qty" type="number" class="form-control bg-transparent text-white text-center border-0 p-0 m-0 shadow-none" value="1" min="1" max="${product.stock}" style="width: 50px; font-weight: bold;" ${product.stock === 0 ? 'disabled' : ''} readonly />
-              <button id="btn-qty-plus" class="btn btn-sm btn-link text-white text-decoration-none px-3" ${product.stock === 0 ? 'disabled' : ''}>
+              <input id="input-qty" type="number" class="form-control bg-transparent text-white text-center border-0 p-0 m-0 shadow-none" value="1" min="1" max="${product.stock}" style="width: 50px; font-weight: bold;" ${product.stock === 0 ? "disabled" : ""} readonly />
+              <button id="btn-qty-plus" class="btn btn-sm btn-link text-white text-decoration-none px-3" ${product.stock === 0 ? "disabled" : ""}>
                 <i class="bx bx-plus"></i>
               </button>
             </div>
             
             <!-- Add to Cart -->
-            <button id="btn-add-to-cart" class="btn btn-lighter btn-ecommerco rounded-pill px-5 py-2 flex-grow-1 text-uppercase fw-bold" ${product.stock === 0 ? 'disabled' : ''}>
+            <button id="btn-add-to-cart" class="btn btn-lighter btn-ecommerco rounded-pill px-5 py-2 flex-grow-1 text-uppercase fw-bold" ${product.stock === 0 ? "disabled" : ""}>
               <i class="bx bx-shopping-bag me-2"></i> Add to Cart
             </button>
             
             <!-- Wishlist -->
             <button id="btn-wishlist" class="btn btn-outline-lighter rounded-circle d-flex align-items-center justify-content-center" style="width: 46px; height: 46px; border: 1px solid rgba(255,255,255,0.15);" data-product-id="${product.id}" title="Add to Wishlist">
-              <i class="bx ${isWishlisted ? 'bxs-heart text-danger' : 'bx-heart'} fs-4"></i>
+              <i class="bx ${isWishlisted ? "bxs-heart text-danger" : "bx-heart"} fs-4 m-0 p-0"></i>
             </button>
           </div>
           
@@ -180,7 +199,7 @@ export function initProductDetails(): void {
               <div class="col-6 text-white-50">Collection:</div>
               <div class="col-6 fw-bold text-end text-capitalize">${product.collection}</div>
               <div class="col-6 text-white-50">Availability:</div>
-              <div class="col-6 fw-bold text-end">${product.stock > 0 ? 'Available' : 'Out of Stock'}</div>
+              <div class="col-6 fw-bold text-end">${product.stock > 0 ? "Available" : "Out of Stock"}</div>
             </div>
           </div>
         </div>
@@ -193,13 +212,15 @@ export function initProductDetails(): void {
 
   // ─── Setup Interactions ───────────────────────────────────
   const setupInteractionListeners = (product: Product): void => {
-    const mainImg = document.getElementById("main-product-img") as HTMLImageElement;
+    const mainImg = document.getElementById(
+      "main-product-img",
+    ) as HTMLImageElement;
     const thumbs = document.querySelectorAll(".product-detail-thumb");
-    
+
     const btnMinus = document.getElementById("btn-qty-minus");
     const btnPlus = document.getElementById("btn-qty-plus");
     const inputQty = document.getElementById("input-qty") as HTMLInputElement;
-    
+
     const btnAddToCart = document.getElementById("btn-add-to-cart");
     const btnWishlist = document.getElementById("btn-wishlist");
 
@@ -209,7 +230,7 @@ export function initProductDetails(): void {
         // Toggle active thumbnail styling
         thumbs.forEach((t) => t.classList.remove("active"));
         thumb.classList.add("active");
-        
+
         // Update main image source
         const index = parseInt((thumb as HTMLElement).dataset.index || "0", 10);
         if (mainImg) {
@@ -248,7 +269,9 @@ export function initProductDetails(): void {
         localStorage.setItem("cart", JSON.stringify(cart));
 
         // Update badge count
-        const badge = document.querySelector<HTMLElement>(".badge-notification");
+        const badge = document.querySelector<HTMLElement>(
+          ".badge-notification",
+        );
         if (badge) {
           badge.textContent = String(cart.length);
         }
@@ -270,10 +293,10 @@ export function initProductDetails(): void {
     if (btnWishlist) {
       btnWishlist.addEventListener("click", () => {
         let wishlist: string[] = JSON.parse(
-          localStorage.getItem("wishlist") ?? "[]"
+          localStorage.getItem("wishlist") ?? "[]",
         );
         const icon = btnWishlist.querySelector("i");
-        
+
         if (wishlist.includes(String(product.id))) {
           // Remove
           wishlist = wishlist.filter((id) => id !== String(product.id));
@@ -289,6 +312,7 @@ export function initProductDetails(): void {
           }
         }
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        updateNavbarBadges();
       });
     }
   };
@@ -450,7 +474,7 @@ export function initProductDetails(): void {
     if (!productId) return;
 
     let wishlist: string[] = JSON.parse(
-      localStorage.getItem("wishlist") ?? "[]"
+      localStorage.getItem("wishlist") ?? "[]",
     );
 
     if (wishlist.includes(productId)) {
@@ -458,7 +482,7 @@ export function initProductDetails(): void {
     } else {
       wishlist.push(productId);
     }
-    
+
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   };
 

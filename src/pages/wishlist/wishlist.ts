@@ -6,6 +6,7 @@
 
 import { productApi } from "../../lib/api";
 import type { Product } from "../../lib/types";
+import { updateNavbarBadges } from "../../router";
 
 export function initWishlist(): void {
   console.log("🚀 ~ Initializing Wishlist Page ~ 🚀");
@@ -24,6 +25,7 @@ export function initWishlist(): void {
 
     if (rawWishlist.length === 0) {
       wishlistProducts = [];
+      updateNavbarBadges();
       renderEmptyWishlist();
       return;
     }
@@ -33,6 +35,7 @@ export function initWishlist(): void {
 
     if (uniqueIds.length === 0) {
       wishlistProducts = [];
+      updateNavbarBadges();
       renderEmptyWishlist();
       return;
     }
@@ -42,6 +45,7 @@ export function initWishlist(): void {
       const responses = await Promise.all(promises);
       wishlistProducts = responses.map((res) => res.data);
 
+      updateNavbarBadges();
       renderWishlistGrid();
     } catch (error) {
       console.error("Failed to load wishlist items:", error);
@@ -62,6 +66,7 @@ export function initWishlist(): void {
   const saveWishlistState = (): void => {
     const ids = wishlistProducts.map((p) => String(p.id));
     localStorage.setItem("wishlist", JSON.stringify(ids));
+    updateNavbarBadges();
 
     if (headerCount) {
       headerCount.textContent = `${wishlistProducts.length} saved item${wishlistProducts.length === 1 ? "" : "s"}`;
