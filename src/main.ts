@@ -32,12 +32,14 @@ if (scrollToTopButton) {
 //End Scroll To Top Button
 // --------------------------------
 
-// Start Settings Box
-// --------------------------------
+// Start Settings Box & Preferences Controller
+// -------------------------------------------------------------
+import { updateNavbarBadges } from "./router";
+
+// 1. Theme Color Initialization
 const bodyColor = localStorage.getItem("bg_theme");
 if (bodyColor !== null) {
   document.documentElement.style.setProperty("--color-bg-body", bodyColor);
-
   document.querySelectorAll(".bg-theme").forEach((el) => {
     const element = el as HTMLElement;
     element.classList.remove("active");
@@ -47,48 +49,111 @@ if (bodyColor !== null) {
   });
 }
 
-// const settingsBtn = document.querySelector<HTMLElement>("#settings-btn");
-// const offcanvasScrolling = document.querySelector<HTMLElement>("#offcanvasScrolling");
-
-// if (settingsBtn && offcanvasScrolling) {
-//   settingsBtn.addEventListener("click", () => {
-//     offcanvasScrolling.classList.toggle("show");
-//     const isOffcanvasVisible = offcanvasScrolling.classList.contains("show");
-//     const icon = settingsBtn.firstElementChild;
-
-//     if (icon) {
-//       if (isOffcanvasVisible) {
-//         icon.classList.add("bx-spin");
-//       } else {
-//         icon.classList.remove("bx-spin");
-//       }
-//     }
-//   });
-// }
-
 const bgTheme = document.querySelectorAll(".bg-theme");
 bgTheme.forEach((li) => {
   li.addEventListener("click", function (this: HTMLElement) {
-    document.documentElement.style.setProperty(
-      "--color-bg-body",
-      this.dataset.color!
-    );
-
-    localStorage.setItem("bg_theme", this.dataset.color!);
+    const color = this.dataset.color!;
+    document.documentElement.style.setProperty("--color-bg-body", color);
+    localStorage.setItem("bg_theme", color);
 
     this.parentElement?.querySelectorAll(".active").forEach((el) => {
-      console.log(el);
       el.classList.remove("active");
     });
-
     this.classList.add("active");
+    showSettingsToast("success", "Theme accent color updated!");
   });
 });
 
+// 2. Store Currency Selection
+const currencySelect = document.getElementById("select-store-currency") as HTMLSelectElement | null;
+const savedCurrency = localStorage.getItem("store_currency") ?? "USD";
+if (currencySelect) {
+  currencySelect.value = savedCurrency;
+  currencySelect.addEventListener("change", () => {
+    const selected = currencySelect.value;
+    localStorage.setItem("store_currency", selected);
+    showSettingsToast("info", `Display currency set to ${selected}`);
+  });
+}
 
+// 3. Animations & Visual Effects Switch
+const switchAnim = document.getElementById("switch-animations") as HTMLInputElement | null;
+const savedAnim = localStorage.getItem("store_animations") ?? "true";
+if (switchAnim) {
+  switchAnim.checked = savedAnim === "true";
+  switchAnim.addEventListener("change", () => {
+    const isChecked = switchAnim.checked;
+    localStorage.setItem("store_animations", isChecked ? "true" : "false");
+    document.body.classList.toggle("no-animations", !isChecked);
+    showSettingsToast("info", isChecked ? "Hover animations enabled" : "Animations reduced");
+  });
+}
 
-// End Settings Box
-// --------------------------------
+// 4. Sticky Navbar Switch
+const switchStickyNav = document.getElementById("switch-sticky-nav") as HTMLInputElement | null;
+const navbarNav = document.querySelector("nav.navbar");
+if (switchStickyNav && navbarNav) {
+  switchStickyNav.addEventListener("change", () => {
+    if (switchStickyNav.checked) {
+      navbarNav.classList.add("sticky-lg-top");
+      showSettingsToast("info", "Sticky Navbar enabled");
+    } else {
+      navbarNav.classList.remove("sticky-lg-top");
+      showSettingsToast("info", "Sticky Navbar disabled");
+    }
+  });
+}
+
+// 5. Clear Store Data Action
+const btnClearData = document.getElementById("btn-clear-store-data");
+if (btnClearData) {
+  btnClearData.addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear your Cart and Wishlist items?")) {
+      localStorage.removeItem("cart");
+      localStorage.removeItem("wishlist");
+      updateNavbarBadges();
+      showSettingsToast("warning", "Cart and Wishlist data cleared!");
+    }
+  });
+}
+
+// 6. Reset Settings to Default Action
+const btnResetPrefs = document.getElementById("btn-reset-preferences");
+if (btnResetPrefs) {
+  btnResetPrefs.addEventListener("click", () => {
+    if (confirm("Reset all store preferences to default?")) {
+      localStorage.removeItem("bg_theme");
+      localStorage.removeItem("store_currency");
+      localStorage.removeItem("store_animations");
+      document.documentElement.style.removeProperty("--color-bg-body");
+      if (currencySelect) currencySelect.value = "USD";
+      if (switchAnim) switchAnim.checked = true;
+      if (switchStickyNav && navbarNav) {
+        switchStickyNav.checked = true;
+        navbarNav.classList.add("sticky-lg-top");
+      }
+      showSettingsToast("success", "Preferences reset to default!");
+    }
+  });
+}
+
+// Helper: Settings Feedback Toast
+function showSettingsToast(type: "success" | "info" | "warning", message: string): void {
+  const container = document.getElementById("settings-alert-container");
+  if (!container) return;
+  container.innerHTML = `
+    <div class="alert alert-${type} bg-opacity-25 border border-${type} border-opacity-50 text-white rounded-3 p-2 fs-7 text-center m-0 animate__animated animate__fadeIn" role="alert">
+      <i class="bx ${type === "success" ? "bx-check-circle text-success" : type === "warning" ? "bx-error text-warning" : "bx-info-circle text-info"} me-1"></i>
+      ${message}
+    </div>
+  `;
+  setTimeout(() => {
+    container.innerHTML = "";
+  }, 3000);
+}
+
+// End Settings Box & Preferences Controller
+// -------------------------------------------------------------
 
 // let CreatePagination = (response) => {
 //   let pages = Math.ceil(70 / response.data.length);

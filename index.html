@@ -209,42 +209,95 @@
     <!-- End Navbar -->
     <!-- Start Setting Box -->
     <div
-      class="offcanvas bg-black text-primary-ops offcanvas-start"
+      class="offcanvas bg-dark-ops text-white offcanvas-start border-end border-white border-opacity-10 shadow-lg"
       data-bs-scroll="true"
-      data-bs-backdrop="false"
+      data-bs-backdrop="true"
       tabindex="-1"
       id="offcanvasScrolling"
       aria-labelledby="offcanvasScrollingLabel"
+      style="width: 340px;"
     >
-      <div class="offcanvas-header pb-0 text-light">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-          Theme Customizes
-        </h5>
+      <div class="offcanvas-header border-bottom border-white border-opacity-10 pb-3 text-light">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bx bx-cog fs-4 text-primary-ops"></i>
+          <h5 class="offcanvas-title fw-bold m-0" id="offcanvasScrollingLabel">
+            Store Preferences
+          </h5>
+        </div>
         <button
           type="button"
-          class="px-0 border-0 bg-black-ops btn btn-dark"
+          class="btn-close btn-close-white opacity-75 shadow-none"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
-        >
-          <i class="bx bx-x bx-md mx-auto"></i>
-        </button>
+        ></button>
       </div>
-      <hr class="mx-3" />
-      <div class="offcanvas-body">
-        <div>
-          <h6 class="text-capitalize">Choose color</h6>
-          <hr />
-          <ul
-            class="color-themes d-flex align-items-center justify-content-around row-gap-4 flex-wrap p-0"
-          >
-            <li class="bg-theme active" data-color="#1E88E5"></li>
-            <li class="bg-theme" data-color="#DB577F"></li>
-            <li class="bg-theme" data-color="#15dc0b"></li>
-            <li class="bg-theme" data-color="#404756"></li>
-            <li class="bg-theme" data-color="#7978ED"></li>
-            <li class="bg-theme" data-color="#DAA21C"></li>
+
+      <div class="offcanvas-body p-4">
+        <!-- Section 1: Color Themes -->
+        <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
+          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
+            <i class="bx bx-palette me-1 text-primary-ops"></i> Primary Accent Theme
+          </label>
+          <ul class="color-themes d-flex align-items-center justify-content-between p-0 m-0">
+            <li class="bg-theme active" data-color="#1E88E5" title="Blue Sapphire"></li>
+            <li class="bg-theme" data-color="#DB577F" title="Rose Quartz"></li>
+            <li class="bg-theme" data-color="#15dc0b" title="Emerald Green"></li>
+            <li class="bg-theme" data-color="#404756" title="Slate Gray"></li>
+            <li class="bg-theme" data-color="#7978ED" title="Electric Violet"></li>
+            <li class="bg-theme" data-color="#DAA21C" title="Amber Gold"></li>
           </ul>
         </div>
+
+        <!-- Section 2: Store Currency -->
+        <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
+          <label for="select-store-currency" class="text-white-50 fs-7 text-uppercase fw-semibold mb-2 d-block">
+            <i class="bx bx-dollar-circle me-1 text-success"></i> Display Currency
+          </label>
+          <select id="select-store-currency" class="form-select bg-light-ops text-white border-white border-opacity-25 shadow-none fs-7">
+            <option value="USD">USD ($) - US Dollar</option>
+            <option value="EUR">EUR (€) - Euro</option>
+            <option value="EGP">EGP (E£) - Egyptian Pound</option>
+            <option value="SAR">SAR (﷼) - Saudi Riyal</option>
+            <option value="GBP">GBP (£) - British Pound</option>
+          </select>
+        </div>
+
+        <!-- Section 3: Interface Motion & Effects -->
+        <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
+          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
+            <i class="bx bx-slider-alt me-1 text-warning"></i> Visual Effects & Motion
+          </label>
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input bg-light-ops border-white border-opacity-25" type="checkbox" id="switch-animations" checked>
+            <label class="form-check-input-label text-white fs-7" for="switch-animations">
+              UI Hover Animations
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input bg-light-ops border-white border-opacity-25" type="checkbox" id="switch-sticky-nav" checked>
+            <label class="form-check-input-label text-white fs-7" for="switch-sticky-nav">
+              Sticky Navbar Header
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 4: Data & Reset Actions -->
+        <div class="mt-4">
+          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
+            <i class="bx bx-refresh me-1 text-danger"></i> Storage & Reset
+          </label>
+          <div class="d-grid gap-2">
+            <button id="btn-clear-store-data" class="btn btn-outline-danger btn-sm text-uppercase fw-semibold border-opacity-25 py-2">
+              <i class="bx bx-trash me-1"></i> Clear Cart & Wishlist
+            </button>
+            <button id="btn-reset-preferences" class="btn btn-outline-light btn-sm text-uppercase fw-semibold border-opacity-25 py-2">
+              <i class="bx bx-reset me-1"></i> Reset Settings to Default
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Alert Container -->
+        <div id="settings-alert-container" class="mt-3"></div>
       </div>
     </div>
     <!-- End Setting Box -->
