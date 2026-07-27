@@ -59,6 +59,24 @@
   );
 }
 
+/* Dedicated styling for icon-only links (user, wishlist, cart) to prevent icon cropping */
+.nav-link:has(.nav-icon) {
+  min-width: 48px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.nav-link:has(.nav-icon)::after {
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
+}
+
 .nav-link:hover,
 .nav-link.active {
   color: var(--color-black-ops) !important;
