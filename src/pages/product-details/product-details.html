@@ -1,0 +1,34 @@
+<!-- Breadcrumbs -->
+<div class="container border-bottom mt-5 pb-4 pt-5">
+  <div class="w-100 mx-auto text-white-50 text-capitalize">
+    <a href="/" class="text-white-50 text-decoration-none transition-base hover-white" onclick="event.preventDefault(); route('/')">Home</a>
+    <span class="mx-2">/</span>
+    <a href="/products" class="text-white-50 text-decoration-none transition-base hover-white" onclick="event.preventDefault(); route('/products')">Products</a>
+    <span class="mx-2">/</span>
+    <span class="text-white fw-bold" id="detail-breadcrumb-title">Product Name</span>
+  </div>
+</div>
+
+<!-- Product Details Section -->
+<section class="py-5 text-white">
+  <div class="container-lg">
+    <div id="product-details-container" class="row g-5">
+      <!-- Loading State -->
+      <div class="col-12 text-center py-5">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Products Section -->
+<section class="py-5 text-white border-top border-white border-opacity-10">
+  <div class="container-lg">
+    <h3 class="mb-4 text-capitalize font-heading">Related Products</h3>
+    <div id="related-products-grid" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <!-- Dynamic related products will be injected here -->
+    </div>
+  </div>
+</section>

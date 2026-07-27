@@ -9,6 +9,7 @@ import {
   initSignin,
   initSignup,
   initProfile,
+  initProductDetails,
 } from "./pages/index";
 
 export function router() {
@@ -43,6 +44,13 @@ export function router() {
       description: "This is the products page",
       init: initProducts,
     },
+    "/product-details": {
+      template: "/product-details/product-details.html",
+      title: "Product Details | " + urlPageTitle,
+      description: "Detailed view of the selected product",
+      init: initProductDetails,
+    },
+
     "/brand": {
       template: "/brand/brand.html",
       title: "Brand | " + urlPageTitle,

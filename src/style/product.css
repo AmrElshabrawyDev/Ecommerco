@@ -176,3 +176,66 @@
   display: none !important;
 }
 
+/* ─── Product Details Layout ─────────────────────────────────── */
+
+.product-detail-gallery {
+  background-color: var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 4/3;
+}
+
+.product-detail-gallery img {
+  transition: transform 0.3s ease;
+}
+
+.product-detail-gallery:hover img {
+  transform: scale(1.03);
+}
+
+.thumbnail-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.product-detail-thumb {
+  background-color: var(--color-primary);
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  opacity: 0.6;
+  transition: var(--transition-base);
+}
+
+.product-detail-thumb:hover,
+.product-detail-thumb.active {
+  opacity: 1;
+  border-color: var(--color-border-active) !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.quantity-selector {
+  background-color: var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.quantity-selector input[type="number"]::-webkit-inner-spin-button,
+.quantity-selector input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.specs-box {
+  background-color: var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hover-white:hover {
+  color: #fff !important;
+}
+
+

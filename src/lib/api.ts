@@ -26,7 +26,7 @@ client.interceptors.request.use(
     // if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error),
 );
 
 // Response interceptor — centralized error handling
@@ -39,11 +39,11 @@ client.interceptors.response.use(
       console.error("API: Server error →", error.message);
     } else if (!error.response) {
       console.error(
-        "API: Network error — Is the JSON server running? (npm run serve)"
+        "API: Network error — Is the JSON server running? (npm run serve)",
       );
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 // ─── Products ────────────────────────────────────────────────
@@ -54,7 +54,7 @@ export const productApi = {
    * @example productApi.getAll({ _sort: "rating", _order: "desc", _page: 1, _limit: 8 })
    */
   getAll: (
-    params: ProductQueryParams = {}
+    params: ProductQueryParams = {},
   ): Promise<ApiResponse<Product[]>> => {
     return client.get("/product", { params });
   },
@@ -73,7 +73,7 @@ export const productApi = {
    */
   getByBrand: (
     brand: string,
-    params: Omit<ProductQueryParams, "brand"> = {}
+    params: Omit<ProductQueryParams, "brand"> = {},
   ): Promise<ApiResponse<Product[]>> => {
     return client.get("/product", { params: { ...params, brand } });
   },
@@ -84,7 +84,7 @@ export const productApi = {
    */
   getByCategory: (
     category: string,
-    params: Omit<ProductQueryParams, "category"> = {}
+    params: Omit<ProductQueryParams, "category"> = {},
   ): Promise<ApiResponse<Product[]>> => {
     return client.get("/product", { params: { ...params, category } });
   },
@@ -95,7 +95,7 @@ export const productApi = {
    */
   getByCollection: (
     collection: string,
-    params: Omit<ProductQueryParams, "collection"> = {}
+    params: Omit<ProductQueryParams, "collection"> = {},
   ): Promise<ApiResponse<Product[]>> => {
     return client.get("/product", { params: { ...params, collection } });
   },
@@ -106,7 +106,7 @@ export const productApi = {
    */
   search: (
     query: string,
-    params: Omit<ProductQueryParams, "q"> = {}
+    params: Omit<ProductQueryParams, "q"> = {},
   ): Promise<ApiResponse<Product[]>> => {
     return client.get("/product", { params: { ...params, q: query } });
   },

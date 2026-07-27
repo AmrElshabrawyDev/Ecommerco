@@ -8,6 +8,7 @@ import { initCart } from "./cart/cart";
 import { initSignin } from "./signin/signin";
 import { initSignup } from "./signup/signup";
 import { initProfile } from "./profile/profile";
+import { initProductDetails } from "./product-details/product-details";
 
 export {
   initHome,
@@ -20,4 +21,6 @@ export {
   initSignin,
   initSignup,
   initProfile,
+  initProductDetails,
 };
+

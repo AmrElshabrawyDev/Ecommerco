@@ -113,7 +113,7 @@ export function initHome(): void {
             </div>
           </div>
 
-          <a href="#" aria-label="View ${data.title}">
+          <a href="/product-details?id=${data.id}" onclick="event.preventDefault(); route('/product-details?id=${data.id}')" aria-label="View ${data.title}">
             <img
               class="card-img-top product-img"
               src="..${data.images[0]}"
@@ -127,7 +127,7 @@ export function initHome(): void {
               <a href="#">
                 <p class="product-category">${data.brand}</p>
               </a>
-              <a href="#">
+              <a href="/product-details?id=${data.id}" onclick="event.preventDefault(); route('/product-details?id=${data.id}')">
                 <h6 class="product-name mb-2">${data.title}</h6>
               </a>
               <div class="d-flex align-items-center">
