@@ -5,6 +5,7 @@
 
 import axios, { AxiosError } from "axios";
 import type { Product, ProductQueryParams, ApiResponse } from "./types";
+import localDb from "../../server/db.json";
 
 // ─── Base Config ─────────────────────────────────────────────
 
@@ -26,13 +27,78 @@ const client = axios.create({
   },
 });
 
+// ─── Fallback Helper ─────────────────────────────────────────
+
+function getFallbackData(url: string, params: Record<string, any> = {}): ApiResponse<any> {
+  console.info(`API: Serving fallback dataset for endpoint: ${url}`);
+  const products: Product[] = (localDb as any).product || [];
+  const categories: string[] = (localDb as any).categories || [];
+
+  if (url === "/categories") {
+    return { data: categories, status: 200, statusText: "OK" };
+  }
+
+  const matchSingle = url.match(/^\/product\/(\d+)$/);
+  if (matchSingle) {
+    const id = Number(matchSingle[1]);
+    const found = products.find((p) => p.id === id);
+    if (found) {
+      return { data: found, status: 200, statusText: "OK" };
+    }
+    throw new Error(`Product with ID ${id} not found`);
+  }
+
+  let result = [...products];
+
+  if (params.brand) {
+    result = result.filter(
+      (p) => p.brand.toLowerCase() === String(params.brand).toLowerCase()
+    );
+  }
+  if (params.category) {
+    result = result.filter(
+      (p) => p.category.toLowerCase() === String(params.category).toLowerCase()
+    );
+  }
+  if (params.collection) {
+    result = result.filter(
+      (p) => p.collection.toLowerCase() === String(params.collection).toLowerCase()
+    );
+  }
+  if (params.q) {
+    const q = String(params.q).toLowerCase();
+    result = result.filter(
+      (p) => p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
+    );
+  }
+
+  if (params._sort) {
+    const sortKey = params._sort as keyof Product;
+    const order = params._order === "desc" ? -1 : 1;
+    result.sort((a, b) => {
+      if (a[sortKey] < b[sortKey]) return -1 * order;
+      if (a[sortKey] > b[sortKey]) return 1 * order;
+      return 0;
+    });
+  }
+
+  if (params._page && params._limit) {
+    const page = Number(params._page) || 1;
+    const limit = Number(params._limit) || 8;
+    const start = (page - 1) * limit;
+    result = result.slice(start, start + limit);
+  } else if (params._limit) {
+    result = result.slice(0, Number(params._limit));
+  }
+
+  return { data: result, status: 200, statusText: "OK" };
+}
+
 // ─── Interceptors ────────────────────────────────────────────
 
 // Request interceptor — can add auth tokens here in the future
 client.interceptors.request.use(
   (config) => {
-    // const token = localStorage.getItem("token");
-    // if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error: AxiosError) => Promise.reject(error),
@@ -48,7 +114,7 @@ client.interceptors.response.use(
       console.error("API: Server error →", error.message);
     } else if (!error.response) {
       console.error(
-        "API: Network error — Is the JSON server running? (npm run serve)",
+        "API: Network error — Using fallback dataset.",
       );
     }
     return Promise.reject(error);
@@ -65,7 +131,9 @@ export const productApi = {
   getAll: (
     params: ProductQueryParams = {},
   ): Promise<ApiResponse<Product[]>> => {
-    return client.get("/product", { params });
+    return client
+      .get("/product", { params })
+      .catch(() => getFallbackData("/product", params));
   },
 
   /**
@@ -73,7 +141,9 @@ export const productApi = {
    * @example productApi.getById(1)
    */
   getById: (id: number): Promise<ApiResponse<Product>> => {
-    return client.get(`/product/${id}`);
+    return client
+      .get(`/product/${id}`)
+      .catch(() => getFallbackData(`/product/${id}`));
   },
 
   /**
@@ -84,7 +154,9 @@ export const productApi = {
     brand: string,
     params: Omit<ProductQueryParams, "brand"> = {},
   ): Promise<ApiResponse<Product[]>> => {
-    return client.get("/product", { params: { ...params, brand } });
+    return client
+      .get("/product", { params: { ...params, brand } })
+      .catch(() => getFallbackData("/product", { ...params, brand }));
   },
 
   /**
@@ -95,7 +167,9 @@ export const productApi = {
     category: string,
     params: Omit<ProductQueryParams, "category"> = {},
   ): Promise<ApiResponse<Product[]>> => {
-    return client.get("/product", { params: { ...params, category } });
+    return client
+      .get("/product", { params: { ...params, category } })
+      .catch(() => getFallbackData("/product", { ...params, category }));
   },
 
   /**
@@ -106,7 +180,9 @@ export const productApi = {
     collection: string,
     params: Omit<ProductQueryParams, "collection"> = {},
   ): Promise<ApiResponse<Product[]>> => {
-    return client.get("/product", { params: { ...params, collection } });
+    return client
+      .get("/product", { params: { ...params, collection } })
+      .catch(() => getFallbackData("/product", { ...params, collection }));
   },
 
   /**
@@ -117,7 +193,9 @@ export const productApi = {
     query: string,
     params: Omit<ProductQueryParams, "q"> = {},
   ): Promise<ApiResponse<Product[]>> => {
-    return client.get("/product", { params: { ...params, q: query } });
+    return client
+      .get("/product", { params: { ...params, q: query } })
+      .catch(() => getFallbackData("/product", { ...params, q: query }));
   },
 
   /**
@@ -142,7 +220,9 @@ export const categoryApi = {
    * @example categoryApi.getAll()
    */
   getAll: (): Promise<ApiResponse<string[]>> => {
-    return client.get("/categories");
+    return client
+      .get("/categories")
+      .catch(() => getFallbackData("/categories"));
   },
 };
 
