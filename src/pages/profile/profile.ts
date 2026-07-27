@@ -94,15 +94,17 @@ export function initProfile(): void {
               ${initials}
             </div>
             <div>
-              <div class="d-flex align-items-center gap-2">
+              <div class="d-flex align-items-center gap-2 flex-wrap">
                 <h4 class="text-white fw-bold mb-0">${userData.name}</h4>
-                <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50 fs-7">Active Member</span>
+                <span class="badge rounded-pill fs-7 d-inline-flex align-items-center gap-1" style="background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.5); padding: 5px 12px; font-weight: 600;">
+                  <i class="bx bxs-check-circle fs-6"></i> Active Member
+                </span>
               </div>
               <p class="text-white-50 mb-0 fs-7 mt-1">${userData.email}</p>
             </div>
           </div>
 
-          <button id="btn-logout" class="btn btn-outline-danger btn-sm text-uppercase px-3 py-2 border-opacity-25 d-flex align-items-center gap-1">
+          <button id="btn-logout" class="btn btn-lighter text-uppercase px-3 py-2 fw-semibold d-flex align-items-center gap-2 rounded-3" style="background: rgba(255, 77, 77, 0.2); color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.4);">
             <i class="bx bx-log-out fs-5"></i> Log Out
           </button>
         </div>
