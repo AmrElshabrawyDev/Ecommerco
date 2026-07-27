@@ -1,1 +1,157 @@
-<h1>contact page</h1>
+<!-- Start Header / Breadcrumbs -->
+<header class="text-white d-flex">
+  <div class="container border-bottom mt-5 pb-4 pt-5">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+      <div>
+        <h2 class="mb-1 text-capitalize fw-bold">Get In Touch</h2>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/" class="text-white-50 text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Contact Us</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
+
+<!-- Start Contact Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Left Column: Contact Form -->
+      <div class="col-lg-7">
+        <div class="card bg-dark-ops border border-white border-opacity-10 rounded-4 shadow-lg p-4 p-md-5">
+          <h4 class="text-white fw-bold mb-2">Send Us a Message</h4>
+          <p class="text-white-50 fs-7 mb-4">Have questions about an order, shipping, or partnership? Fill out the form below and our team will respond within 24 hours.</p>
+
+          <!-- Alert Container -->
+          <div id="contact-alert-container"></div>
+
+          <form id="contact-form" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="contact-name" class="form-label text-white-50 fs-7">Full Name</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light-ops text-white-50 border-white border-opacity-25"><i class="bx bx-user"></i></span>
+                  <input type="text" id="contact-name" class="form-control bg-light-ops text-white border-white border-opacity-25 shadow-none" placeholder="Your Name" required />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="contact-email" class="form-label text-white-50 fs-7">Email Address</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light-ops text-white-50 border-white border-opacity-25"><i class="bx bx-envelope"></i></span>
+                  <input type="email" id="contact-email" class="form-control bg-light-ops text-white border-white border-opacity-25 shadow-none" placeholder="name@example.com" required />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="contact-subject" class="form-label text-white-50 fs-7">Subject</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light-ops text-white-50 border-white border-opacity-25"><i class="bx bx-purchase-tag-alt"></i></span>
+                  <input type="text" id="contact-subject" class="form-control bg-light-ops text-white border-white border-opacity-25 shadow-none" placeholder="Order inquiry / Feedback" required />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="contact-message" class="form-label text-white-50 fs-7">Message</label>
+                <textarea id="contact-message" class="form-control bg-light-ops text-white border-white border-opacity-25 shadow-none" rows="5" placeholder="Write your message here..." required></textarea>
+              </div>
+            </div>
+
+            <button type="submit" id="btn-contact-submit" class="btn btn-lighter btn-ecommerco w-100 py-3 mt-4 text-uppercase fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2">
+              <i class="bx bx-paper-plane fs-5"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Details & FAQ -->
+      <div class="col-lg-5">
+        <div class="d-flex flex-column gap-4">
+          <!-- Info Card -->
+          <div class="card bg-dark-ops border border-white border-opacity-10 rounded-4 shadow-lg p-4">
+            <h5 class="text-white fw-bold mb-4 pb-2 border-bottom border-white border-opacity-10">Contact Information</h5>
+
+            <div class="d-flex align-items-start gap-3 mb-3">
+              <div class="bg-light-ops text-primary-ops rounded-3 p-3 border border-white border-opacity-10">
+                <i class="bx bx-map fs-4"></i>
+              </div>
+              <div>
+                <h6 class="text-white mb-1">Headquarters</h6>
+                <p class="text-white-50 fs-7 mb-0">123 Fashion Street, City, Africa / Global Store</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3 mb-3">
+              <div class="bg-light-ops text-success rounded-3 p-3 border border-white border-opacity-10">
+                <i class="bx bx-phone-call fs-4"></i>
+              </div>
+              <div>
+                <h6 class="text-white mb-1">Phone Lines</h6>
+                <p class="text-white-50 fs-7 mb-0">Toll Free: (123) 472-796</p>
+                <p class="text-white-50 fs-7 mb-0">Mobile: +91-9910XXXX</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3 mb-3">
+              <div class="bg-light-ops text-info rounded-3 p-3 border border-white border-opacity-10">
+                <i class="bx bx-envelope fs-4"></i>
+              </div>
+              <div>
+                <h6 class="text-white mb-1">Email Support</h6>
+                <p class="text-white-50 fs-7 mb-0">support@fashionstowage.com</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="bg-light-ops text-warning rounded-3 p-3 border border-white border-opacity-10">
+                <i class="bx bx-time-five fs-4"></i>
+              </div>
+              <div>
+                <h6 class="text-white mb-1">Working Hours</h6>
+                <p class="text-white-50 fs-7 mb-0">Mon - Fri: 9:30 AM - 6:30 PM (UTC)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Card -->
+          <div class="card bg-dark-ops border border-white border-opacity-10 rounded-4 shadow-lg p-4">
+            <h5 class="text-white fw-bold mb-3">Frequently Asked Questions</h5>
+            
+            <div class="accordion accordion-flush" id="faqAccordion">
+              <div class="accordion-item bg-transparent text-white border-bottom border-white border-opacity-10">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button bg-transparent text-white shadow-none collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    What are your shipping delivery times?
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body px-0 text-white-50 fs-7">
+                    Express shipping takes 3–5 business days worldwide. Standard shipping takes 7–10 business days.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent text-white border-bottom border-white border-opacity-10">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button bg-transparent text-white shadow-none collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    What is your return & refund policy?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body px-0 text-white-50 fs-7">
+                    We offer a 30-day hassle-free return policy for all unworn products in original condition.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
