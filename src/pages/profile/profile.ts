@@ -203,13 +203,21 @@ export function initProfile(): void {
                     <tr style="background-color: transparent !important;">
                       <td class="fw-bold" style="background-color: transparent !important;">#ORD-98421</td>
                       <td class="text-white-50" style="background-color: transparent !important;">July 24, 2026</td>
-                      <td style="background-color: transparent !important;"><span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50">Delivered</span></td>
+                      <td style="background-color: transparent !important;">
+                        <span class="badge rounded-pill d-inline-flex align-items-center gap-1 fs-7" style="background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.5); padding: 5px 12px; font-weight: 600;">
+                          <i class="bx bx-check-circle fs-6"></i> Delivered
+                        </span>
+                      </td>
                       <td class="text-end fw-bold text-primary-ops" style="background-color: transparent !important;">$149.99</td>
                     </tr>
                     <tr style="background-color: transparent !important;">
                       <td class="fw-bold" style="background-color: transparent !important;">#ORD-97105</td>
                       <td class="text-white-50" style="background-color: transparent !important;">June 18, 2026</td>
-                      <td style="background-color: transparent !important;"><span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50">Completed</span></td>
+                      <td style="background-color: transparent !important;">
+                        <span class="badge rounded-pill d-inline-flex align-items-center gap-1 fs-7" style="background: rgba(30, 136, 229, 0.2); color: #4fc3f7; border: 1px solid rgba(79, 195, 247, 0.5); padding: 5px 12px; font-weight: 600;">
+                          <i class="bx bx-badge-check fs-6"></i> Completed
+                        </span>
+                      </td>
                       <td class="text-end fw-bold text-primary-ops" style="background-color: transparent !important;">$289.00</td>
                     </tr>
                   </tbody>
