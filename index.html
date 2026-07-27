@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,10 @@
     <link rel="icon" href="assets/images/logos/Untitled_logo_3_free-file.jpg" />
     <!-- Third-party styles (must stay outside @import for performance) -->
     <link rel="stylesheet" href="node_modules/boxicons/css/boxicons.min.css" />
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
     <!-- Design system entry point (imports all partials in correct order) -->
     <link rel="stylesheet" href="src/style/main.css" />
   </head>
@@ -209,15 +212,17 @@
     <!-- End Navbar -->
     <!-- Start Setting Box -->
     <div
-      class="offcanvas bg-dark-ops text-white offcanvas-start border-end border-white border-opacity-10 shadow-lg"
+      class="offcanvas bg-black text-white offcanvas-start border-end border-white border-opacity-10 shadow-lg"
       data-bs-scroll="true"
       data-bs-backdrop="true"
       tabindex="-1"
       id="offcanvasScrolling"
       aria-labelledby="offcanvasScrollingLabel"
-      style="width: 340px;"
+      style="width: 340px"
     >
-      <div class="offcanvas-header border-bottom border-white border-opacity-10 pb-3 text-light">
+      <div
+        class="offcanvas-header border-bottom border-white border-opacity-10 pb-3 text-light"
+      >
         <div class="d-flex align-items-center gap-2">
           <i class="bx bx-cog fs-4 text-primary-ops"></i>
           <h5 class="offcanvas-title fw-bold m-0" id="offcanvasScrollingLabel">
@@ -235,25 +240,49 @@
       <div class="offcanvas-body p-4">
         <!-- Section 1: Color Themes -->
         <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
-          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
-            <i class="bx bx-palette me-1 text-primary-ops"></i> Primary Accent Theme
+          <label
+            class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block"
+          >
+            <i class="bx bx-palette me-1 text-primary-ops"></i> Primary Accent
+            Theme
           </label>
-          <ul class="color-themes d-flex align-items-center justify-content-between p-0 m-0">
-            <li class="bg-theme active" data-color="#1E88E5" title="Blue Sapphire"></li>
+          <ul
+            class="color-themes d-flex align-items-center justify-content-between p-0 m-0"
+          >
+            <li
+              class="bg-theme active"
+              data-color="#1E88E5"
+              title="Blue Sapphire"
+            ></li>
             <li class="bg-theme" data-color="#DB577F" title="Rose Quartz"></li>
-            <li class="bg-theme" data-color="#15dc0b" title="Emerald Green"></li>
+            <li
+              class="bg-theme"
+              data-color="#15dc0b"
+              title="Emerald Green"
+            ></li>
             <li class="bg-theme" data-color="#404756" title="Slate Gray"></li>
-            <li class="bg-theme" data-color="#7978ED" title="Electric Violet"></li>
+            <li
+              class="bg-theme"
+              data-color="#7978ED"
+              title="Electric Violet"
+            ></li>
             <li class="bg-theme" data-color="#DAA21C" title="Amber Gold"></li>
           </ul>
         </div>
 
         <!-- Section 2: Store Currency -->
         <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
-          <label for="select-store-currency" class="text-white-50 fs-7 text-uppercase fw-semibold mb-2 d-block">
-            <i class="bx bx-dollar-circle me-1 text-success"></i> Display Currency
+          <label
+            for="select-store-currency"
+            class="text-white-50 fs-7 text-uppercase fw-semibold mb-2 d-block"
+          >
+            <i class="bx bx-dollar-circle me-1 text-success"></i> Display
+            Currency
           </label>
-          <select id="select-store-currency" class="form-select bg-light-ops text-white border-white border-opacity-25 shadow-none fs-7">
+          <select
+            id="select-store-currency"
+            class="form-select bg-light-ops text-white border-white border-opacity-25 shadow-none fs-7"
+          >
             <option value="USD">USD ($) - US Dollar</option>
             <option value="EUR">EUR (€) - Euro</option>
             <option value="EGP">EGP (E£) - Egyptian Pound</option>
@@ -264,18 +293,37 @@
 
         <!-- Section 3: Interface Motion & Effects -->
         <div class="mb-4 pb-3 border-bottom border-white border-opacity-10">
-          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
-            <i class="bx bx-slider-alt me-1 text-warning"></i> Visual Effects & Motion
+          <label
+            class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block"
+          >
+            <i class="bx bx-slider-alt me-1 text-warning"></i> Visual Effects &
+            Motion
           </label>
           <div class="form-check form-switch mb-2">
-            <input class="form-check-input bg-light-ops border-white border-opacity-25" type="checkbox" id="switch-animations" checked>
-            <label class="form-check-input-label text-white fs-7" for="switch-animations">
+            <input
+              class="form-check-input bg-light-ops border-white border-opacity-25"
+              type="checkbox"
+              id="switch-animations"
+              checked
+            />
+            <label
+              class="form-check-input-label text-white fs-7"
+              for="switch-animations"
+            >
               UI Hover Animations
             </label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input bg-light-ops border-white border-opacity-25" type="checkbox" id="switch-sticky-nav" checked>
-            <label class="form-check-input-label text-white fs-7" for="switch-sticky-nav">
+            <input
+              class="form-check-input bg-light-ops border-white border-opacity-25"
+              type="checkbox"
+              id="switch-sticky-nav"
+              checked
+            />
+            <label
+              class="form-check-input-label text-white fs-7"
+              for="switch-sticky-nav"
+            >
               Sticky Navbar Header
             </label>
           </div>
@@ -283,14 +331,22 @@
 
         <!-- Section 4: Data & Reset Actions -->
         <div class="mt-4">
-          <label class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block">
+          <label
+            class="text-white-50 fs-7 text-uppercase fw-semibold mb-3 d-block"
+          >
             <i class="bx bx-refresh me-1 text-danger"></i> Storage & Reset
           </label>
           <div class="d-grid gap-2">
-            <button id="btn-clear-store-data" class="btn btn-outline-danger btn-sm text-uppercase fw-semibold border-opacity-25 py-2">
+            <button
+              id="btn-clear-store-data"
+              class="btn btn-outline-danger btn-sm text-uppercase fw-semibold border-opacity-25 py-2"
+            >
               <i class="bx bx-trash me-1"></i> Clear Cart & Wishlist
             </button>
-            <button id="btn-reset-preferences" class="btn btn-outline-light btn-sm text-uppercase fw-semibold border-opacity-25 py-2">
+            <button
+              id="btn-reset-preferences"
+              class="btn btn-outline-light btn-sm text-uppercase fw-semibold border-opacity-25 py-2"
+            >
               <i class="bx bx-reset me-1"></i> Reset Settings to Default
             </button>
           </div>
@@ -353,43 +409,85 @@
                 <h6 class="mb-3">Shop Categories</h6>
                 <ul>
                   <li class="mb-1">
-                    <a href="/products?category=shoes" onclick="event.preventDefault(); route('/products?category=shoes')">
+                    <a
+                      href="/products?category=shoes"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=shoes');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Shoes
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=cap" onclick="event.preventDefault(); route('/products?category=cap')">
+                    <a
+                      href="/products?category=cap"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=cap');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Cap
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=bag" onclick="event.preventDefault(); route('/products?category=bag')">
+                    <a
+                      href="/products?category=bag"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=bag');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Bag
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=t-shirt" onclick="event.preventDefault(); route('/products?category=t-shirt')">
+                    <a
+                      href="/products?category=t-shirt"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=t-shirt');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       T-Shirt
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=pants" onclick="event.preventDefault(); route('/products?category=pants')">
+                    <a
+                      href="/products?category=pants"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=pants');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Pants
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=jacket" onclick="event.preventDefault(); route('/products?category=jacket')">
+                    <a
+                      href="/products?category=jacket"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=jacket');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Jacket
                     </a>
                   </li>
                   <li class="mb-1">
-                    <a href="/products?category=shirt" onclick="event.preventDefault(); route('/products?category=shirt')">
+                    <a
+                      href="/products?category=shirt"
+                      onclick="
+                        event.preventDefault();
+                        route('/products?category=shirt');
+                      "
+                    >
                       <i class="bx bx-chevron-right"></i>
                       Shirt
                     </a>
@@ -401,20 +499,132 @@
               <div class="mb-3">
                 <h6 class="mb-3">Popular Tags</h6>
                 <div class="tags-box">
-                  <a href="/products?category=t-shirt" onclick="event.preventDefault(); route('/products?category=t-shirt')" class="tag-link">Cloths</a>
-                  <a href="/products?category=shoes" onclick="event.preventDefault(); route('/products?category=shoes')" class="tag-link">Sports</a>
-                  <a href="/products?collection=men" onclick="event.preventDefault(); route('/products?collection=men')" class="tag-link">Men Wear</a>
-                  <a href="/products?collection=women" onclick="event.preventDefault(); route('/products?collection=women')" class="tag-link">Women Wear</a>
-                  <a href="/products?category=shirt" onclick="event.preventDefault(); route('/products?category=shirt')" class="tag-link">Formal Shirts</a>
-                  <a href="/products?collection=men" onclick="event.preventDefault(); route('/products?collection=men')" class="tag-link">Top wear</a>
-                  <a href="/products?category=pants" onclick="event.preventDefault(); route('/products?category=pants')" class="tag-link">Bottom Wear</a>
-                  <a href="/products?category=bag" onclick="event.preventDefault(); route('/products?category=bag')" class="tag-link">Bags</a>
-                  <a href="/products?category=shoes" onclick="event.preventDefault(); route('/products?category=shoes')" class="tag-link">Shoes</a>
-                  <a href="/products?category=shirt" onclick="event.preventDefault(); route('/products?category=shirt')" class="tag-link">Shirt</a>
-                  <a href="/products?category=cap" onclick="event.preventDefault(); route('/products?category=cap')" class="tag-link">Cap</a>
-                  <a href="/products?category=jacket" onclick="event.preventDefault(); route('/products?category=jacket')" class="tag-link">Jacket</a>
-                  <a href="/products?category=pants" onclick="event.preventDefault(); route('/products?category=pants')" class="tag-link">Pants</a>
-                  <a href="/products?category=scarf" onclick="event.preventDefault(); route('/products?category=scarf')" class="tag-link">Scarf</a>
+                  <a
+                    href="/products?category=t-shirt"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=t-shirt');
+                    "
+                    class="tag-link"
+                    >Cloths</a
+                  >
+                  <a
+                    href="/products?category=shoes"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=shoes');
+                    "
+                    class="tag-link"
+                    >Sports</a
+                  >
+                  <a
+                    href="/products?collection=men"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?collection=men');
+                    "
+                    class="tag-link"
+                    >Men Wear</a
+                  >
+                  <a
+                    href="/products?collection=women"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?collection=women');
+                    "
+                    class="tag-link"
+                    >Women Wear</a
+                  >
+                  <a
+                    href="/products?category=shirt"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=shirt');
+                    "
+                    class="tag-link"
+                    >Formal Shirts</a
+                  >
+                  <a
+                    href="/products?collection=men"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?collection=men');
+                    "
+                    class="tag-link"
+                    >Top wear</a
+                  >
+                  <a
+                    href="/products?category=pants"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=pants');
+                    "
+                    class="tag-link"
+                    >Bottom Wear</a
+                  >
+                  <a
+                    href="/products?category=bag"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=bag');
+                    "
+                    class="tag-link"
+                    >Bags</a
+                  >
+                  <a
+                    href="/products?category=shoes"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=shoes');
+                    "
+                    class="tag-link"
+                    >Shoes</a
+                  >
+                  <a
+                    href="/products?category=shirt"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=shirt');
+                    "
+                    class="tag-link"
+                    >Shirt</a
+                  >
+                  <a
+                    href="/products?category=cap"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=cap');
+                    "
+                    class="tag-link"
+                    >Cap</a
+                  >
+                  <a
+                    href="/products?category=jacket"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=jacket');
+                    "
+                    class="tag-link"
+                    >Jacket</a
+                  >
+                  <a
+                    href="/products?category=pants"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=pants');
+                    "
+                    class="tag-link"
+                    >Pants</a
+                  >
+                  <a
+                    href="/products?category=scarf"
+                    onclick="
+                      event.preventDefault();
+                      route('/products?category=scarf');
+                    "
+                    class="tag-link"
+                    >Scarf</a
+                  >
                 </div>
               </div>
             </div>
@@ -463,9 +673,13 @@
         class="py-3 mt-1 text-white border-white border-opacity-10 border-top bg-black-ops"
       >
         <div class="container">
-          <div class="row row-cols-1 row-cols-md-3 align-items-center justify-content-center text-center text-md-start g-3">
+          <div
+            class="row row-cols-1 row-cols-md-3 align-items-center justify-content-center text-center text-md-start g-3"
+          >
             <!-- Social Links Column -->
-            <div class="col d-flex justify-content-center justify-content-md-start">
+            <div
+              class="col d-flex justify-content-center justify-content-md-start"
+            >
               <ul
                 class="d-flex align-items-center justify-content-center justify-content-md-start p-0 m-0 gap-3 fs-4"
               >
@@ -532,7 +746,7 @@
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
-                  style="width: 22px; height: 22px;"
+                  style="width: 22px; height: 22px"
                 >
                   <path
                     d=" M 5 125, L 5 320, 220 445, 280 445, 495 320, 495 120, 280 10, 220 10, z  "
@@ -555,20 +769,40 @@
             </div>
 
             <!-- Payment Icons Column -->
-            <div class="col d-flex justify-content-center justify-content-md-end">
+            <div
+              class="col d-flex justify-content-center justify-content-md-end"
+            >
               <div class="payment-icon">
-                <ul class="d-flex align-items-center justify-content-center justify-content-md-end p-0 m-0 gap-2">
+                <ul
+                  class="d-flex align-items-center justify-content-center justify-content-md-end p-0 m-0 gap-2"
+                >
                   <li>
-                    <img src="/assets/images/img/visa.png" alt="Visa" style="max-height: 26px; width: auto;" />
+                    <img
+                      src="/assets/images/img/visa.png"
+                      alt="Visa"
+                      style="max-height: 26px; width: auto"
+                    />
                   </li>
                   <li>
-                    <img src="/assets/images/img/mastercard.png" alt="Mastercard" style="max-height: 26px; width: auto;" />
+                    <img
+                      src="/assets/images/img/mastercard.png"
+                      alt="Mastercard"
+                      style="max-height: 26px; width: auto"
+                    />
                   </li>
                   <li>
-                    <img src="/assets/images/img/paypal.png" alt="PayPal" style="max-height: 26px; width: auto;" />
+                    <img
+                      src="/assets/images/img/paypal.png"
+                      alt="PayPal"
+                      style="max-height: 26px; width: auto"
+                    />
                   </li>
                   <li>
-                    <img src="/assets/images/img/american-express.png" alt="Amex" style="max-height: 26px; width: auto;" />
+                    <img
+                      src="/assets/images/img/american-express.png"
+                      alt="Amex"
+                      style="max-height: 26px; width: auto"
+                    />
                   </li>
                 </ul>
               </div>

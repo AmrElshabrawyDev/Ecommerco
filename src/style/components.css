@@ -183,3 +183,16 @@
   stroke-dasharray: 0 var(--pathLength);
   animation: loader 2s ease-in-out infinite both;
 }
+
+/* ─── Form Select Dark Dropdown Fix ────────────────────────── */
+
+.form-select,
+.form-select option {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+.form-select:focus {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: none !important;
+}
