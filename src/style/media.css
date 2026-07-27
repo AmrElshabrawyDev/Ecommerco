@@ -15,6 +15,11 @@
 @media (max-width: 991px) {
   .navbar-brand {
     text-align: left;
+    font-size: 1.1rem !important;
+  }
+  .navbar-brand .brand-svg {
+    width: 28px !important;
+    height: 28px !important;
   }
   .nav__items {
     position: absolute;
@@ -57,6 +62,9 @@
 }
 
 @media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 0.95rem !important;
+  }
   .nav__items {
     position: absolute;
     top: 25%;
